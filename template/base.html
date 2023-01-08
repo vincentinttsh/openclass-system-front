@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    {% include 'base/head_source.html' %}
+  </head>
+
+  <body
+    class="relative"
+    style="display: flex; flex-direction: column; height: 100vh"
+  >
+    {% include 'base/nav.html' %}
+    <main class="container mt-2 mx-auto" style="flex: 1 0 auto;">
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'base/footer.html' %} {% include 'base/footer_source.html' %}
+  </body>
+</html>
