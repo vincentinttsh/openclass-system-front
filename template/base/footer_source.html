@@ -1,1 +1,9 @@
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script>
+  let toast = document.querySelectorAll('[toast-auto-hide]');
+  setTimeout(() => {
+    toast.forEach((el) => {
+      el.classList.add('opacity-0');
+    });
+  }, 3000);
+</script>
