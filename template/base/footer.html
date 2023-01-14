@@ -1,6 +1,11 @@
 <footer class="bg-gray-200 text-center lg:text-left" style="flex-shrink: 0;">
-  <div class="text-gray-700 text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Copyright:
-    <a class="text-gray-800" href="https://tailwind-elements.com/">Tailwind Elements</a>
+  <div id="copyright" class="text-gray-700 text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+    Copyright:
+    <a class="text-gray-800" href="https://www.vincentinttsh.tw/about">vincentinttsh 郭子緯 </a>
+    v3.0
   </div>
 </footer>
+<script>
+  document.getElementById("copyright").innerHTML = "© " + new Date().getFullYear() + 
+  " " + document.getElementById("copyright").innerHTML;
+</script>

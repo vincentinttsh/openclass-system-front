@@ -2,7 +2,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = {
     content: ["./template/**/*.html"],
     theme: {
-      extend: {},
+      screens: {
+        lg: '992px',
+      },
     },
     plugins: [
       require('tw-elements/dist/plugin')
@@ -12,7 +14,9 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = {
     content: ["./template/**/*.html", './node_modules/tw-elements/dist/js/**/*.js'],
     theme: {
-      extend: {},
+      screens: {
+        lg: '992px',
+      },
     },
     plugins: [
       require('tw-elements/dist/plugin')
