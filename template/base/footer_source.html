@@ -5,5 +5,10 @@
     toast.forEach((el) => {
       el.classList.add('opacity-0');
     });
+    setTimeout(() => {
+      toast.forEach((el) => {
+        el.remove();
+      });
+    }, 700);
   }, 3000);
 </script>
