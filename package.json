@@ -5,8 +5,9 @@
   "repository": "https://github.com/vincentinttsh/openclass-system-front",
   "main": "index.js",
   "dependencies": {
-    "autoprefixer": "^10.4.2",
-    "tailwindcss": "^3.0.23",
+    "autoprefixer": "^10.4.13",
+    "prettier-plugin-django": "^0.5.6",
+    "tailwindcss": "^3.2.4",
     "tw-elements": "^1.0.0-alpha13"
   },
   "scripts": {
@@ -15,5 +16,9 @@
     "prod": "tailwindcss -i src/main.css -o ./static/css/main.css --minify"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.8.3",
+    "prettier-plugin-tailwindcss": "^0.2.1"
+  }
 }

@@ -1,84 +1,150 @@
 {% extends 'base.html' %} {% block content %}
 <div class="justify-center border-4 pb-3">
-  <h1 class="text-4xl font-bold text-center mt-3">註冊</h1>
+  <h1 class="mt-3 text-center text-4xl font-bold">註冊</h1>
   <hr class="mt-3" />
   <form method="post" role="form" action="/register">
     <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          id="username"
-          name="username"
-          value="{{ username }}"
-          readonly
-        />
-        <label for="username" class="text-gray-700">姓名</label>
-      </div>
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          id="email"
-          name="email"
-          value="{{ email }}"
-          readonly
-        />
-        <label for="email" class="text-gray-700">Email address</label>
-      </div>
-      <div class="mb-3 xl:w-96 form-floating">
-        <select
-          class="form-control form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          id="department"
-          name="department"
-          required
+    <section class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="user"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
         >
-          {% if department %}
-          <option disabled value="">選擇部門</option>
-          {% else %}
-          <option selected disabled value="">選擇部門</option>
-          {% endif %} {% for choice in department_choice %} {% if choice.value == department %}
-          <option selected value="{{ choice.value }}">{{ choice.text }}</option>
-          {% else %}
-          <option value="{{ choice.value }}">{{ choice.text }}</option>
-          {% endif %} {% endfor %}
-        </select>
-        <label for="department" class="text-gray-700">部門</label>
+          <path
+            fill="currentColor"
+            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="username"
+            name="username"
+            value="{{ form.Username }}"
+            readonly
+          />
+          <label for="username" class="text-gray-700">姓名</label>
+        </div>
       </div>
-      <div class="mb-3 xl:w-96 form-floating">
-        <select
-          class="form-control form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          id="subject"
-          name="subject"
-          required
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="envelope"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
         >
-          {% if subject %}
-          <option disabled value="">選擇授課科目</option>
-          {% else %}
-          <option selected disabled value="">選擇授課科目</option>
-          {% endif %}
-          {% for choice in subject_choice %} {% if choice.value == subject %}
-          <option selected value="{{ choice.value }}">{{ choice.text }}</option>
-          {% else %}
-          <option value="{{ choice.value }}">{{ choice.text }}</option>
-          {% endif %}
-          {% endfor %}
-        </select>
-        <label for="department" class="text-gray-700">授課科目</label>
+          <path
+            fill="currentColor"
+            d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="email"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="email"
+            name="email"
+            value="{{ form.Email }}"
+            readonly
+          />
+          <label for="email" class="text-gray-700">Email address</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="chalkboard-teacher"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 512"
+        >
+          <path
+            fill="currentColor"
+            d="M208 352c-2.39 0-4.78.35-7.06 1.09C187.98 357.3 174.35 360 160 360c-14.35 0-27.98-2.7-40.95-6.91-2.28-.74-4.66-1.09-7.05-1.09C49.94 352-.33 402.48 0 464.62.14 490.88 21.73 512 48 512h224c26.27 0 47.86-21.12 48-47.38.33-62.14-49.94-112.62-112-112.62zm-48-32c53.02 0 96-42.98 96-96s-42.98-96-96-96-96 42.98-96 96 42.98 96 96 96zM592 0H208c-26.47 0-48 22.25-48 49.59V96c23.42 0 45.1 6.78 64 17.8V64h352v288h-64v-64H384v64h-76.24c19.1 16.69 33.12 38.73 39.69 64H592c26.47 0 48-22.25 48-49.59V49.59C640 22.25 618.47 0 592 0z"
+          ></path>
+        </svg>
+        <div class="xl:w-96 form-floating mb-3 flex-grow">
+          <select
+            class="form-select form-control m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="department"
+            name="department"
+          >
+            {% if department %}
+            <option disabled value="">選擇部門</option>
+            {% else %}
+            <option selected disabled value="">選擇部門</option>
+            {% endif %} {% for key, value in department_choice %}
+            {% if key == form.Department %}
+            <option selected value="{{ key }}">{{ value }}</option>
+            {% else %}
+            <option value="{{ key }}">{{ value }}</option>
+            {% endif %} {% endfor %}
+          </select>
+          <label for="department" class="text-gray-700">部門</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="address-card"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
+        >
+          <path
+            fill="currentColor"
+            d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm96-96c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zm128-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+          ></path>
+        </svg>
+        <div class="xl:w-96 form-floating mb-3 flex-grow">
+          <select
+            class="form-select form-control m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="subject"
+            name="subject"
+            required
+          >
+            {% if subject %}
+            <option disabled value="">選擇授課科目</option>
+            {% else %}
+            <option selected disabled value="">選擇授課科目</option>
+            {% endif %} {% for key, value in subject_choice %} {% if key == form.Subject %}
+            <option selected value="{{ key }}">{{ value }}</option>
+            {% else %}
+            <option value="{{ key }}">{{ value }}</option>
+            {% endif %} {% endfor %}
+          </select>
+          <label for="subject" class="text-gray-700">授課科目</label>
+        </div>
       </div>
     </section>
     <section class="mt-3 flex justify-center">
       <button
         type="submit"
-        class="px-6 pt-2.5 pb-2 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex"
+        class="flex rounded bg-blue-600 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
       >
         <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
           data-icon="paper-plane"
-          class="w-3 mr-2"
+          class="mr-2 w-3"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"

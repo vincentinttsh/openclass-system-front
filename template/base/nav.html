@@ -1,12 +1,12 @@
 <header style="flex-shrink: 0">
   <nav
-    class="sticky-top w-full flex flex-wrap items-center justify-between py-4 bg-blue-400 shadow-lg navbar navbar-expand-lg"
+    class="navbar sticky-top navbar-expand-lg flex w-full flex-wrap items-center justify-between bg-blue-400 py-4 shadow-lg"
   >
     <div
-      class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
+      class="container-fluid flex w-full flex-wrap items-center justify-between px-6"
     >
       <button
-        class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+        class="navbar-toggler border-0 bg-transparent py-2 px-2.5 text-gray-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0"
         type="button"
         data-bs-toggle="collapse"
         aria-label="nav button"
@@ -28,9 +28,9 @@
           ></path>
         </svg>
       </button>
-      <div class="grow items-center flex lg:grow-0">
+      <div class="flex grow items-center lg:grow-0">
         <a
-          class="flex items-center mt-2 lg:mt-0 ml-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
+          class="mt-2 ml-2 flex items-center text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:mt-0"
           href="/"
         >
           <img
@@ -42,52 +42,115 @@
             loading="lazy"
             class="mr-2"
           />
-          <span class="font-extrabold text-xl">公開授課系統</span>
+          <span class="text-xl font-extrabold">公開授課系統</span>
         </a>
       </div>
 
       <div
-        class="collapse navbar-collapse flex-grow items-center"
+        class="navbar-collapse collapse flex-grow items-center"
         id="navbarSupportedContent"
       >
         <!-- Left links -->
-        <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+        <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
+          {% if username %}
           <li
-            class="nav-item p-2 dropdown static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
           >
             <a
-              class="font-bold text-lg nav-link p-0"
+              class="nav-link flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
-              id="dropdownMenuButtonX"
+              id="openClass"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              公開授課
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="chevron-down"
+                class="ml-1 h-3 self-center"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                ></path>
+              </svg>
+            </a>
+            <div
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full bg-white shadow-lg"
+              aria-labelledby="openClass"
+            >
+              <div class="px-6 py-5 lg:px-8">
+                <div class="gap-6">
+                  <div class="bg-white text-gray-600">
+                    <a
+                      href="/class/create"
+                      aria-current="true"
+                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+                      >新增</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+          <li
+            class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
+          >
+            <a
+              class="nav-link flex items-stretch p-0 text-lg font-bold"
+              href="#"
+              type="button"
+              id="aboutThisSite"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               關於本網站
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="far"
+                data-icon="chevron-down"
+                class="ml-1 h-3 self-center"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                ></path>
+              </svg>
             </a>
             <div
-              class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
-              aria-labelledby="dropdownMenuButtonX"
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full bg-white shadow-lg"
+              aria-labelledby="aboutThisSite"
             >
-              <div class="px-6 lg:px-8 py-5">
+              <div class="px-6 py-5 lg:px-8">
                 <div class="gap-6">
                   <div class="bg-white text-gray-600">
                     <a
                       href="#!"
                       aria-current="true"
-                      class="block lg:inline px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
                       >隱私權政策</a
                     >
                     <a
                       href="#!"
                       aria-current="true"
-                      class="block lg:inline px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
                       >服務條款</a
                     >
                     <a
                       href="#!"
                       aria-current="true"
-                      class="block lg:inline px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
                       >網站資訊</a
                     >
                   </div>
@@ -97,44 +160,44 @@
           </li>
           {% if username %}
           <li
-            class="lg:collapse nav-item p-2 static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:collapse"
           >
-            <p class="font-bold text-lg p-0">{{ username }} 你好</p>
+            <p class="p-0 text-lg font-bold">{{ username }} 你好</p>
           </li>
           <li
-            class="lg:collapse nav-item p-2 static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:collapse"
           >
-            <a class="font-bold text-lg nav-link p-0" href="/logout"> 登出 </a>
+            <a class="nav-link p-0 text-lg font-bold" href="/logout"> 登出 </a>
           </li>
           {% else %}
           <li
-            class="lg:collapse nav-item p-2 static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:collapse"
           >
-            <a class="font-bold text-lg nav-link p-0" href="/login"> 登入 </a>
+            <a class="nav-link p-0 text-lg font-bold" href="/login"> 登入 </a>
           </li>
           {% endif %}
         </ul>
         <!-- Left links -->
       </div>
       <!-- Right elements -->
-      <div class="flex items-center relative">
-        <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+      <div class="relative flex items-center">
+        <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
           {% if username %}
           <li
-            class="hidden lg:block nav-item p-2 static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static hidden p-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:block"
           >
-            <p class="font-bold text-lg p-0">{{ username }} 你好</p>
+            <p class="p-0 text-lg font-bold">{{ username }} 你好</p>
           </li>
           <li
-            class="hidden lg:block nav-item p-2 static text-gray-900 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static hidden p-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:block"
           >
-            <a class="font-bold text-lg nav-link p-0" href="/logout"> 登出 </a>
+            <a class="nav-link p-0 text-lg font-bold" href="/logout"> 登出 </a>
           </li>
           {% else %}
           <li
-            class="hidden lg:block nav-item p-2 static text-gray-800 hover:text-gray-700 focus:text-gray-700"
+            class="nav-item static hidden p-2 text-gray-800 hover:text-gray-700 focus:text-gray-700 lg:block"
           >
-            <a class="font-bold text-lg nav-link p-0" href="/login"> 登入 </a>
+            <a class="nav-link p-0 text-lg font-bold" href="/login"> 登入 </a>
           </li>
           {% endif %}
         </ul>

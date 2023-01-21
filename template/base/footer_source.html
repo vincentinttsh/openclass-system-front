@@ -1,14 +1,10 @@
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
 <script>
-  let toast = document.querySelectorAll('[toast-auto-hide]');
-  setTimeout(() => {
-    toast.forEach((el) => {
-      el.classList.add('opacity-0');
-    });
-    setTimeout(() => {
-      toast.forEach((el) => {
-        el.remove();
-      });
-    }, 700);
-  }, 3000);
+  setTimeout(function () {
+    let toast = document.getElementsByClassName("toast");
+    for (let i = 0; i < toast.length; i++) {
+      toast[i].classList.remove("show");
+      toast[i].classList.add("hidden");
+    }
+  }, 5000);
 </script>

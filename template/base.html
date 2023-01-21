@@ -7,33 +7,9 @@
   <body class="relative flex flex-col h-screen">
     {% include 'base/nav.html' %}
     <main class="container mt-5 mx-auto relative" style="flex: 1 0 auto">
-      {% if messages %}
-      <div class="absolute inset-x-0 z-[2000]">
-        {% for message in messages %} {% if message.level == 'info' %}
-        <div
-          class="bg-blue-600 mb-4 break-words text-white p-3 shadow-lg mx-auto w-96 max-w-[80%] text-sm pointer-events-auto bg-clip-padding rounded-lg block transition-opacity duration-700 ease-in opacity-100"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          toast-auto-hide="true"
-        >
-          {{ message.msg }}
-        </div>
-        {% elif message.level == 'error' %}
-        <div
-          class="bg-red-600 mb-4 break-words text-white p-3 shadow-lg mx-auto w-96 max-w-[80%] text-sm pointer-events-auto bg-clip-padding rounded-lg block transition-opacity duration-700 ease-in opacity-100"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          toast-auto-hide="true"
-        >
-          {{ message.msg }}
-        </div>
-        {% endif %} {% endfor %}
-      </div>
-      {% endif %} {% block content %}{% endblock %}
+      {% include 'base/toast.html' %}{% block content %}{% endblock %}
     </main>
     {% include 'base/footer.html' %} {% include 'base/footer_source.html' %}
   </body>
 </html>
-<!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+<!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
