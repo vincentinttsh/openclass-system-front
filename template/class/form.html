@@ -2,7 +2,7 @@
 <div class="justify-center border-4 pb-3">
   <h1 class="mt-3 text-center text-4xl font-bold">新增公開授課</h1>
   <hr class="mt-3" />
-  <form method="post" role="form" action="/class/create">
+  <form method="post" role="form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
     <section class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
       <div class="flex items-stretch">
@@ -60,7 +60,7 @@
             placeholder="上課教室"
             required
           />
-          <label for="classrom" class="text-gray-700">上課教室</label>
+          <label for="classroom" class="text-gray-700">上課教室</label>
         </div>
       </div>
     </section>
@@ -171,14 +171,14 @@
     <section class="mt-3 flex justify-center">
       <button
         type="submit"
-        class="flex rounded bg-blue-600 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+        class="flex items-stretch rounded bg-blue-600 px-6 pt-2.5 pb-2 text-sm font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
       >
         <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
           data-icon="paper-plane"
-          class="mr-2 w-3"
+          class="mr-2 w-3 self-center"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
@@ -188,7 +188,7 @@
             d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
           />
         </svg>
-        註冊
+        新增
       </button>
     </section>
   </form>

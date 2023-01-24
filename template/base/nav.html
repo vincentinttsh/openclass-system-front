@@ -1,6 +1,6 @@
 <header style="flex-shrink: 0">
   <nav
-    class="navbar sticky-top navbar-expand-lg flex w-full flex-wrap items-center justify-between bg-blue-400 py-4 shadow-lg"
+    class="navbar navbar-expand-lg sticky-top flex w-full flex-wrap items-center justify-between bg-blue-400 py-4 shadow-lg"
   >
     <div
       class="container-fluid flex w-full flex-wrap items-center justify-between px-6"
@@ -57,7 +57,7 @@
             class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
           >
             <a
-              class="nav-link flex items-stretch p-0 text-lg font-bold"
+              class="nav-link nav-link-icon flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
               id="openClass"
@@ -65,38 +65,25 @@
               aria-expanded="false"
             >
               公開授課
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="far"
-                data-icon="chevron-down"
-                class="ml-1 h-3 self-center"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                ></path>
-              </svg>
             </a>
             <div
-              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full bg-white shadow-lg"
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-600 shadow-lg lg:px-8"
               aria-labelledby="openClass"
             >
-              <div class="px-6 py-5 lg:px-8">
-                <div class="gap-6">
-                  <div class="bg-white text-gray-600">
-                    <a
-                      href="/class/create"
-                      aria-current="true"
-                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
-                      >新增</a
-                    >
-                  </div>
-                </div>
-              </div>
+              <a
+                href="/class/create"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+              >
+                新增
+              </a>
+              <a
+                href="/class/my"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+              >
+                我的課程
+              </a>
             </div>
           </li>
           {% endif %}
@@ -104,7 +91,7 @@
             class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
           >
             <a
-              class="nav-link flex items-stretch p-0 text-lg font-bold"
+              class="nav-link nav-link-icon flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
               id="aboutThisSite"
@@ -112,50 +99,29 @@
               aria-expanded="false"
             >
               關於本網站
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="far"
-                data-icon="chevron-down"
-                class="ml-1 h-3 self-center"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
-                ></path>
-              </svg>
             </a>
             <div
-              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full bg-white shadow-lg"
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-600 shadow-lg lg:px-8"
               aria-labelledby="aboutThisSite"
             >
-              <div class="px-6 py-5 lg:px-8">
-                <div class="gap-6">
-                  <div class="bg-white text-gray-600">
-                    <a
-                      href="#!"
-                      aria-current="true"
-                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
-                      >隱私權政策</a
-                    >
-                    <a
-                      href="#!"
-                      aria-current="true"
-                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
-                      >服務條款</a
-                    >
-                    <a
-                      href="#!"
-                      aria-current="true"
-                      class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
-                      >網站資訊</a
-                    >
-                  </div>
-                </div>
-              </div>
+              <a
+                href="#!"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+                >隱私權政策</a
+              >
+              <a
+                href="#!"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+                >服務條款</a
+              >
+              <a
+                href="#!"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+                >網站資訊</a
+              >
             </div>
           </li>
           {% if username %}
