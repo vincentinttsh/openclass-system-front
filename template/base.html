@@ -3,13 +3,16 @@
   <head>
     {% include 'base/head_source.html' %}
   </head>
-
-  <body class="relative flex flex-col h-screen">
+  <body class="relative flex h-screen flex-col">
     {% include 'base/nav.html' %}
-    <main class="container px-3 my-5 lg:mx-auto relative" style="flex: 1 0 auto">
+    <main
+      class="container relative my-5 px-3 lg:mx-auto"
+      style="flex: 1 0 auto"
+    >
       {% include 'base/toast.html' %}{% block content %}{% endblock %}
     </main>
     {% include 'base/footer.html' %} {% include 'base/footer_source.html' %}
+    {% block other_js %}{% endblock %}
   </body>
 </html>
 <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->

@@ -1,0 +1,308 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="mt-3 text-center text-4xl font-bold">我所有的公開授課</h1>
+<hr class="my-3" />
+<div class="mx-auto mb-3 flex w-2/3 items-stretch">
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    data-prefix="fa-solid"
+    data-icon="magnifying-glass"
+    class="input-icon mr-2 w-6 self-center"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+  >
+    <path
+      fill="currentColor"
+      d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"
+    ></path>
+  </svg>
+  <div class="form-floating flex-grow outline-0">
+    <input
+      type="text"
+      class="form-control m-0 block w-full rounded-full border-2 border-gray-300 bg-white bg-clip-padding text-base font-normal text-gray-700 outline-0 focus:border-blue-600"
+      id="search"
+      placeholder="搜尋課程"
+      style="box-shadow: none !important"
+      required
+    />
+    <label for="search" class="text-gray-700">搜尋課程</label>
+  </div>
+</div>
+<div class="accordion shadow-lg">
+  {% for course in classes %}
+  <div class="accordion-item border border-gray-200 bg-white">
+    <h2 class="accordion-header mb-0" id="headingCourse{{ course.ClassID }}">
+      <button
+        class="accordion-button collapsed relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-gray-800 transition focus:outline-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseCourse{{ course.ClassID }}"
+        aria-expanded="false"
+        aria-controls="collapseCourse{{ course.ClassID }}"
+      >
+        {{ course.Date }}-{{ course.ClassName }}
+      </button>
+    </h2>
+    <div
+      id="collapseCourse{{ course.ClassID }}"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingCourse{{ course.ClassID }}"
+    >
+      <div
+        class="accordion-body grid grid-cols-1 gap-4 p-4 px-5 py-4 lg:grid-cols-4"
+      >
+        <a
+          class="mx-auto flex items-stretch"
+          href="/class/{{ course.ClassID }}/design"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="file-lines"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              fill="currentColor"
+              d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">活動設計表</p>
+        </a>
+        <a
+          class="mx-auto flex items-stretch"
+          href="/class/{{ course.ClassID }}/preparation"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="file-lines"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              fill="currentColor"
+              d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">備課紀錄表</p>
+        </a>
+        <a
+          class="mx-auto flex items-stretch"
+          href="/class/{{ course.ClassID }}/briefing"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="file-lines"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              fill="currentColor"
+              d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">議課紀錄表</p>
+        </a>
+        <a
+          class="mx-auto flex items-stretch"
+          href="/class/{{ course.ClassID }}/observation/list"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="file-lines"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              fill="currentColor"
+              d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">觀課紀錄表</p>
+        </a>
+        <div class="mx-auto flex items-stretch">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="users"
+            class="input-icon mr-2 w-6 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512"
+          >
+            <path
+              fill="currentColor"
+              d="M144 160c-44.2 0-80-35.8-80-80S99.8 0 144 0s80 35.8 80 80s-35.8 80-80 80zm368 0c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM416 224c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">參加人數： {{ course.Attend }}人</p>
+        </div>
+        <a
+          href="#"
+          class="mx-auto flex items-stretch"
+          data-bs-toggle="modal"
+          data-bs-target="#class{{ course.ClassID }}-QRCode-Modal"
+          aria-controls="class{{ course.ClassID }}-QRCode-Modal"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="qrcode"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M48 32C21.5 32 0 53.5 0 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm80 64v64H64V96h64zM48 288c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48zm80 64v64H64V352h64zM256 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H304c-26.5 0-48 21.5-48 48zm64 16h64v64H320V96zm32 352v32h32V448H352zm96 0H416v32h32V448zM416 288v32H352V288H256v96 96h64V384h32v32h96V352 320 288H416z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">報到 QR Code</p>
+        </a>
+        <a
+          class="mx-auto flex items-stretch"
+          href="{{ course.Calendar }}"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="calendar-day"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm80 64c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h96c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">新增至行事曆</p>
+        </a>
+        <a
+          class="mx-auto flex items-stretch"
+          href="/class/{{ course.ClassID }}"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fa-solid"
+            data-icon="pen-to-square"
+            class="input-icon mr-2 h-4 self-center"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+            ></path>
+          </svg>
+          <p class="flex-grow self-center">修改</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% for course in classes %}
+<div
+  class="modal fade fixed top-0 left-0 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+  id="class{{ course.ClassID }}-QRCode-Modal"
+  tabindex="-1"
+  aria-labelledby="class{{ course.ClassID }}-QRCode-Modal"
+  aria-hidden="true"
+  role="dialog"
+>
+  <div
+    class="modal-dialog modal-dialog-centered pointer-events-none relative w-auto"
+  >
+    <div
+      class="modal-content pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none"
+    >
+      <div
+        class="modal-header flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-gray-200 p-4"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800">
+          報到 QR Code
+        </h5>
+        <button
+          type="button"
+          class="btn-close box-content h-4 w-4 rounded-none border-none p-1 text-black opacity-50 hover:text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div
+        id="class{{ course.ClassID }}-QRCode"
+        class="modal-body relative p-4"
+      ></div>
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %} {% block other_js %}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+  integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+  async
+  onload="createQRCode()"
+></script>
+<script>
+  function createQRCode() {
+    // {% for course in classes %}
+    new QRCode(document.getElementById("class{{ course.ClassID }}-QRCode"), {
+      text: "https://openclass.ttsh.tp.edu.tw/class/{{course.ClassID}}/attend/{{course.Passwd}}",
+      width: 500,
+      height: 500,
+    });
+    // {% endfor %}
+  }
+</script>
+<script>
+  let search = document.getElementById("search");
+  search.onchange = function () {
+    let courses = document.getElementsByClassName("accordion-item");
+    for (let i = 0; i < courses.length; i++) {
+      let course = courses[i];
+      let courseName =
+        course.getElementsByClassName("accordion-header")[0].innerText;
+      if (courseName.includes(search.value)) {
+        course.style.display = "block";
+      } else {
+        course.style.display = "none";
+      }
+    }
+  };
+</script>
+{% endblock %}

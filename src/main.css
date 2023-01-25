@@ -11,7 +11,7 @@ div:focus-within>.input-icon {
 }
 
 .accordion-button:not(.collapsed) {
-    @apply text-blue-400;
+    @apply text-blue-600;
 }
 
 .nav-link-icon::after {
