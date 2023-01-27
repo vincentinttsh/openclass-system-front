@@ -30,7 +30,7 @@
   </div>
 </div>
 <div class="accordion shadow-lg">
-  {% for course in classes %}
+  {% for course in courses %}
   <div class="accordion-item border border-gray-200 bg-white">
     <h2 class="accordion-header mb-0" id="headingCourse{{ course.ClassID }}">
       <button
@@ -232,7 +232,7 @@
   </div>
   {% endfor %}
 </div>
-{% for course in classes %}
+{% for course in courses %}
 <div
   class="modal fade fixed top-0 left-0 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
   id="class{{ course.ClassID }}-QRCode-Modal"
@@ -279,7 +279,7 @@
 ></script>
 <script>
   function createQRCode() {
-    // {% for course in classes %}
+    // {% for course in courses %}
     new QRCode(document.getElementById("class{{ course.ClassID }}-QRCode"), {
       text: "https://openclass.ttsh.tp.edu.tw/class/{{course.ClassID}}/attend/{{course.Passwd}}",
       width: 500,

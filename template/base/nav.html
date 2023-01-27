@@ -49,7 +49,12 @@
         id="navbarSupportedContent"
       >
         <!-- Left links -->
-        <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
+        <ul class="list-style-none navbar-nav ml-1 mr-auto flex flex-col pl-0">
+          <li
+            class="nav-item static py-2 text-gray-900 hover:text-purple-900 focus:text-purple-900"
+          >
+            <a class="nav-link p-0 text-lg font-bold" href="/">首頁</a>
+          </li>
           {% if username %}
           <li class="dropdown nav-item static py-2">
             <a
@@ -89,7 +94,7 @@
               class="nav-link-icon nav-link flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
-              id="openClass"
+              id="systemManage"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
@@ -148,7 +153,7 @@
           </li>
           {% if username %}
           <li
-            class="nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:collapse"
+            class="nav-item static py-2 text-gray-900 lg:collapse"
           >
             <p class="p-0 text-lg font-bold">{{ username }} 你好</p>
           </li>

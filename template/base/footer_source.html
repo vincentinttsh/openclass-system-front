@@ -1,10 +1,16 @@
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js" defer></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"
+  defer
+></script>
 <script>
-  setTimeout(function () {
-    let toast = document.getElementsByClassName("toast");
-    for (let i = 0; i < toast.length; i++) {
-      toast[i].classList.remove("show");
-      toast[i].classList.add("hidden");
-    }
-  }, 5000);
+  function cleanUpToasts() {
+    setTimeout(function () {
+      let toast = document.getElementsByClassName("toast");
+      for (let i = 0; i < toast.length; i++) {
+        toast[i].classList.remove("show");
+        toast[i].classList.add("hidden");
+      }
+    }, 5000);
+  }
+  cleanUpToasts();
 </script>
