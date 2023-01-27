@@ -1,6 +1,6 @@
 <header style="flex-shrink: 0">
   <nav
-    class="navbar navbar-expand-lg sticky-top flex w-full flex-wrap items-center justify-between bg-blue-400 py-4 shadow-lg"
+    class="navbar navbar-expand-lg sticky-top flex w-full flex-wrap items-center justify-between bg-blue-300 py-4 shadow-lg"
   >
     <div
       class="container-fluid flex w-full flex-wrap items-center justify-between px-6"
@@ -29,9 +29,8 @@
         </svg>
       </button>
       <div class="flex grow items-center lg:grow-0">
-        <a
+        <p
           class="mt-2 ml-2 flex items-center text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:mt-0"
-          href="/"
         >
           <img
             src="/static/ttsh.jpg"
@@ -43,9 +42,8 @@
             class="mr-2"
           />
           <span class="text-xl font-extrabold">公開授課系統</span>
-        </a>
+        </p>
       </div>
-
       <div
         class="navbar-collapse collapse flex-grow items-center"
         id="navbarSupportedContent"
@@ -53,11 +51,9 @@
         <!-- Left links -->
         <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
           {% if username %}
-          <li
-            class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
-          >
+          <li class="dropdown nav-item static py-2">
             <a
-              class="nav-link nav-link-icon flex items-stretch p-0 text-lg font-bold"
+              class="nav-link-icon nav-link flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
               id="openClass"
@@ -67,7 +63,7 @@
               公開授課
             </a>
             <div
-              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-600 shadow-lg lg:px-8"
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-900 shadow-lg lg:px-8"
               aria-labelledby="openClass"
             >
               <a
@@ -87,11 +83,37 @@
             </div>
           </li>
           {% endif %}
-          <li
-            class="dropdown nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700"
-          >
+          {% if admin %}
+          <li class="dropdown nav-item static py-2">
             <a
-              class="nav-link nav-link-icon flex items-stretch p-0 text-lg font-bold"
+              class="nav-link-icon nav-link flex items-stretch p-0 text-lg font-bold"
+              href="#"
+              type="button"
+              id="openClass"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              系統管理
+            </a>
+            <div
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-900 shadow-lg lg:px-8"
+              aria-labelledby="openClass"
+            >
+              {% if super_admin %}
+              <a
+                href="/metrics"
+                aria-current="true"
+                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-700 lg:inline"
+              >
+                系統資訊
+              </a>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+          <li class="dropdown nav-item static py-2">
+            <a
+              class="nav-link-icon nav-link flex items-stretch p-0 text-lg font-bold"
               href="#"
               type="button"
               id="aboutThisSite"
@@ -101,7 +123,7 @@
               關於本網站
             </a>
             <div
-              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-600 shadow-lg lg:px-8"
+              class="dropdown-menu absolute left-0 top-full mt-0 hidden w-full gap-6 bg-white px-6 py-5 text-gray-900 shadow-lg lg:px-8"
               aria-labelledby="aboutThisSite"
             >
               <a
@@ -131,7 +153,7 @@
             <p class="p-0 text-lg font-bold">{{ username }} 你好</p>
           </li>
           <li
-            class="nav-item static py-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:collapse"
+            class="nav-item static py-2 text-gray-900 hover:text-purple-900 focus:text-purple-900 lg:collapse"
           >
             <a class="nav-link p-0 text-lg font-bold" href="/logout"> 登出 </a>
           </li>
@@ -149,19 +171,17 @@
       <div class="relative flex items-center">
         <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
           {% if username %}
-          <li
-            class="nav-item static hidden p-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:block"
-          >
+          <li class="nav-item static hidden p-2 text-gray-900 lg:block">
             <p class="p-0 text-lg font-bold">{{ username }} 你好</p>
           </li>
           <li
-            class="nav-item static hidden p-2 text-gray-900 hover:text-gray-700 focus:text-gray-700 lg:block"
+            class="nav-item static hidden p-2 text-gray-900 hover:text-purple-900 focus:text-purple-900 lg:block"
           >
             <a class="nav-link p-0 text-lg font-bold" href="/logout"> 登出 </a>
           </li>
           {% else %}
           <li
-            class="nav-item static hidden p-2 text-gray-800 hover:text-gray-700 focus:text-gray-700 lg:block"
+            class="nav-item static hidden p-2 text-gray-800 hover:text-purple-900 focus:text-purple-900 lg:block"
           >
             <a class="nav-link p-0 text-lg font-bold" href="/login"> 登入 </a>
           </li>
