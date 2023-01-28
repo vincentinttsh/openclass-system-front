@@ -279,13 +279,23 @@
 ></script>
 <script>
   function createQRCode() {
+    let key = [
     // {% for course in courses %}
-    new QRCode(document.getElementById("class{{ course.ClassID }}-QRCode"), {
-      text: "https://openclass.ttsh.tp.edu.tw/class/{{course.ClassID}}/attend/{{course.Passwd}}",
-      width: 500,
-      height: 500,
-    });
+      "class{{ course.ClassID }}-QRCode",
     // {% endfor %}
+    ];
+    let value = [
+    // {% for course in courses %}
+      "{{baseURL}}/class/{{course.ClassID}}/attend/{{course.Passwd}}",
+    // {% endfor %}
+    ];
+    for (let i = 0; i < key.length; i++) {
+      new QRCode(document.getElementById(key[i]), {
+        text: value[i],
+        width: 500,
+        height: 500,
+      });
+    }
   }
 </script>
 <script>

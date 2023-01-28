@@ -27,12 +27,12 @@
           <input
             type="text"
             class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-            id="className"
-            name="className"
+            id="name"
+            name="name"
             value="{{ form.Name }}"
             placeholder="單元名稱"
           />
-          <label for="className" class="text-gray-700">單元名稱</label>
+          <label for="name" class="text-gray-700">單元名稱</label>
         </div>
       </div>
       <div class="flex items-stretch">
@@ -239,7 +239,7 @@
           ></path>
         </svg>
         <div
-          class="datepicker form-floating relative flex-grow"
+          class="form-floating relative flex-grow"
           data-mdb-toggle-button="false"
         >
           <textarea
@@ -272,7 +272,7 @@
           ></path>
         </svg>
         <div
-          class="datepicker form-floating relative flex-grow"
+          class="form-floating relative flex-grow"
           data-mdb-toggle-button="false"
         >
           <textarea
@@ -305,7 +305,7 @@
           ></path>
         </svg>
         <div
-          class="datepicker form-floating relative flex-grow"
+          class="form-floating relative flex-grow"
           data-mdb-toggle-button="false"
         >
           <textarea
@@ -338,7 +338,7 @@
           ></path>
         </svg>
         <div
-          class="datepicker form-floating relative flex-grow"
+          class="form-floating relative flex-grow"
           data-mdb-toggle-button="false"
         >
           <textarea
@@ -371,7 +371,7 @@
           ></path>
         </svg>
         <div
-          class="datepicker form-floating relative flex-grow"
+          class="form-floating relative flex-grow"
           data-mdb-toggle-button="false"
         >
           <textarea
@@ -660,16 +660,16 @@
         <svg
           aria-hidden="true"
           focusable="false"
-          data-prefix="fas"
-          data-icon="paper-plane"
+          data-prefix="fa-solid"
+          data-icon="plus"
           class="mr-2 w-4 self-center"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
+          viewBox="0 0 448 512"
         >
           <path
             fill="currentColor"
-            d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
           />
         </svg>
         <span>增加</span>
@@ -682,16 +682,16 @@
         <svg
           aria-hidden="true"
           focusable="false"
-          data-prefix="fas"
-          data-icon="paper-plane"
+          data-prefix="fa-solid"
+          data-icon="minus"
           class="mr-2 w-3 self-center"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
+          viewBox="0 0 448 512"
         >
           <path
             fill="currentColor"
-            d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+            d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"
           />
         </svg>
         減少
@@ -726,11 +726,17 @@
 <script>
   let field = document.querySelectorAll("[autoHeight]");
   field.forEach((element) => {
-    let base = 2 + element.value.split("\n").length * 1.5;
+    let base = 2 + element.value.split("\n").length * 1.25;
     element.style.height = "calc(" + base + "rem + 2px)";
+    if (element.offsetHeight < element.scrollHeight) {
+      element.style.height = element.scrollHeight + 'px';
+    }
     element.oninput = () => {
-      let base = 2 + element.value.split("\n").length * 1.5;
+      let base = 2 + element.value.split("\n").length * 1.25;
       element.style.height = "calc(" + base + "rem + 2px)";
+      if (element.offsetHeight < element.scrollHeight) {
+        element.style.height = element.scrollHeight + 'px';
+      }
     };
   });
 </script>

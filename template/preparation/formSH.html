@@ -1,0 +1,463 @@
+{% extends 'base.html' %} {% block content %}
+<div class="justify-center border-4 pb-3">
+  <h1 class="mt-3 text-center text-4xl font-bold">
+    {{ method }}共同備課記錄表
+  </h1>
+  <hr class="mt-3" />
+  <form method="post" role="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+    <section class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="book-open"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
+        >
+          <path
+            fill="currentColor"
+            d="M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C87.5 32 35.1 48.6 9 59.9c-5.6 2.4-9 8-9 14V454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5V73.9c0-6.1-3.4-11.6-9-14C540.9 48.6 488.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="subject"
+            name="subject"
+            value="{{ form.Subject }}"
+            placeholder="學科"
+            required
+          />
+          <label for="subject" class="text-gray-700">學科</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="user-pen"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 512"
+        >
+          <path
+            fill="currentColor"
+            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H322.8c-3.1-8.8-3.7-18.4-1.4-27.8l15-60.1c2.8-11.3 8.6-21.5 16.8-29.7l40.3-40.3c-32.1-31-75.7-50.1-123.9-50.1H178.3zm435.5-68.3c-15.6-15.6-40.9-15.6-56.6 0l-29.4 29.4 71 71 29.4-29.4c15.6-15.6 15.6-40.9 0-56.6l-14.4-14.4zM375.9 417c-4.1 4.1-7 9.2-8.4 14.9l-15 60.1c-1.4 5.5 .2 11.2 4.2 15.2s9.7 5.6 15.2 4.2l60.1-15c5.6-1.4 10.8-4.3 14.9-8.4L576.1 358.7l-71-71L375.9 417z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="author"
+            value="{{ form.User.Name }}"
+            placeholder="填寫者"
+            required
+          />
+          <label for="author" class="text-gray-700">填寫者</label>
+        </div>
+      </div>
+    </section>
+    <section class="grid grid-cols-1 gap-4 px-4 pb-4 lg:grid-cols-3">
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="calendar-day"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm80 64c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16h96c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80z"
+          ></path>
+        </svg>
+        <div
+          class="datepicker form-floating relative flex-grow"
+          data-mdb-toggle-button="false"
+        >
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="date"
+            name="date"
+            datepicker-format="yyyy/mm/dd"
+            placeholder="教學日期"
+            data-mdb-toggle="datepicker"
+            value="{{ form.Date }}"
+          />
+          <label for="date" class="text-gray-700">教學日期</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="clock"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M256 512C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256s-114.6 256-256 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating timepicker relative flex-grow"
+          data-mdb-with-icon="false"
+          id="input-toggle-timepicker"
+        >
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            placeholder="教學開始時間"
+            data-mdb-toggle="input-toggle-timepicker"
+            id="startTime"
+            name="startTime"
+            value="{{ form.StartTime }}"
+          />
+          <label for="startTime" class="text-gray-700">教學開始時間</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="clock-rotate-left"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating timepicker relative flex-grow"
+          data-mdb-with-icon="false"
+          id="input-toggle-timepicker"
+        >
+          <input
+            id="endTime"
+            name="endTime"
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            placeholder="教學結束時間"
+            data-mdb-toggle="input-toggle-timepicker"
+            value="{{ form.EndTime }}"
+          />
+          <label for="endTime" class="text-gray-700">教學結束時間</label>
+        </div>
+      </div>
+    </section>
+    <section class="grid grid-cols-1 gap-4 p-4 lg:grid-cols-2">
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="book-open-reader"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M352 96c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zM240 248V512l-48.4-24.2c-20.9-10.4-43.5-17-66.8-19.3l-96-9.6C12.5 457.2 0 443.5 0 427V224c0-17.7 14.3-32 32-32H62.3c63.6 0 125.6 19.6 177.7 56zm32 264V248c52.1-36.4 114.1-56 177.7-56H480c17.7 0 32 14.3 32 32V427c0 16.4-12.5 30.2-28.8 31.8l-96 9.6c-23.2 2.3-45.9 8.9-66.8 19.3L272 512z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="grade"
+            name="grade"
+            value="{{ form.Grade }}"
+            placeholder="教學年級"
+            required
+          />
+          <label for="grade" class="text-gray-700">教學年級</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="book"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="name"
+            name="name"
+            value="{{ form.Name }}"
+            placeholder="教學單元"
+            required
+          />
+          <label for="name" class="text-gray-700">教學單元</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="book"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
+        >
+          <path
+            fill="currentColor"
+            d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48V96H384V80c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H432c-26.5 0-48-21.5-48-48V160H192v16c0 1.7-.1 3.4-.3 5L272 288h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V336c0-1.7 .1-3.4 .3-5L144 224H48c-26.5 0-48-21.5-48-48V80z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="material"
+            name="material"
+            value="{{ form.Material }}"
+            placeholder="教材來源"
+            required
+          />
+          <label for="material" class="text-gray-700">教材來源</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="user"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+          ></path>
+        </svg>
+        <div class="form-floating flex-grow">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="teacher"
+            value="{{ form.Course.User.Name }}"
+            placeholder="教學者"
+            required
+          />
+          <label for="teacher" class="text-gray-700">教學者</label>
+        </div>
+      </div>
+    </section>
+    <section class="grid grid-cols-1 gap-4 px-4 pb-4">
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="bullseye"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192zm64 0c0 141.4-114.6 256-256 256S0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80zm0 64c-79.5 0-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144s-64.5 144-144 144zm32-144c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating relative flex-grow"
+          data-mdb-toggle-button="false"
+        >
+          <textarea
+            type="text"
+            class="form-control m-0 block w-full resize-none overflow-y-hidden rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="objectives"
+            name="objectives"
+            placeholder="教學目標"
+            autoHeight="true"
+          >
+{{ form.Objectives }}</textarea
+          >
+          <label for="objectives" class="text-gray-700">教學目標</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-brands"
+          data-icon="stack-overflow"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        >
+          <path
+            fill="currentColor"
+            d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating relative flex-grow"
+          data-mdb-toggle-button="false"
+        >
+          <textarea
+            type="text"
+            class="form-control m-0 block w-full resize-none overflow-y-hidden rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="experience"
+            name="experience"
+            placeholder="學生經驗"
+            autoHeight="true"
+          >
+{{ form.Experience }}</textarea
+          >
+          <label for="experience" class="text-gray-700">學生經驗</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="teamspeak"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M244.2 346.79c2.4-12.3-12-30-32.4-48.7-20.9-19.2-48.2-39.1-63.4-46.6-21.7-12-41.7-1.8-46.3 22.7-5 26.2 0 51.4 14.5 73.9 10.2 15.5 25.4 22.7 43.4 24 11.6.6 52.5 2.2 61.7-1 11.9-4.3 20.1-11.8 22.5-24.3zm205 20.8a5.22 5.22 0 0 0-8.3 2.4c-8 25.4-44.7 112.5-172.1 121.5-149.7 10.5 80.3 43.6 145.4-6.4 22.7-17.4 47.6-35 46.6-85.4-.4-10.1-4.9-26.69-11.6-32.1zm62-122.4c-.3-18.9-8.6-33.4-26-42.2-2.9-1.3-5-2.7-5.9-6.4A222.64 222.64 0 0 0 438.9 103c-1.1-1.5-3.5-3.2-2.2-5 8.5-11.5-.3-18-7-24.4Q321.4-31.11 177.4 13.09c-40.1 12.3-73.9 35.6-102 67.4-4 4.3-6.7 9.1-3 14.5 3 4 1.3 6.2-1 9.3C51.6 132 38.2 162.59 32.1 196c-.7 4.3-2.9 6-6.4 7.8-14.2 7-22.5 18.5-24.9 34L0 264.29v20.9c0 30.8 21 50.4 51.8 49 7.7-.3 11.7-4.3 12-11.5 2-77.5-2.4-95.4 3.7-125.8C92.1 72.39 234.3 5 345.3 65.39 411.4 102 445.7 159 447.6 234.79c.8 28.2 0 56.5 0 84.6 0 7 2.2 12.5 9.4 14.2 24.1 5 49.2-12 53.2-36.7 2.9-17.1 1-34.5 1-51.7zm-159.6 131.5c36.5 2.8 59.3-28.5 58.4-60.5-2.1-45.2-66.2-16.5-87.8-8-73.2 28.1-45 54.9-22.2 60.8z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating relative flex-grow"
+          data-mdb-toggle-button="false"
+        >
+          <textarea
+            type="text"
+            class="form-control m-0 block w-full resize-none overflow-y-hidden rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="activity"
+            name="activity"
+            placeholder="教學活動"
+            autoHeight="true"
+          >
+{{ form.Activity }}</textarea
+          >
+          <label for="activity" class="text-gray-700">教學活動</label>
+        </div>
+      </div>
+      <div class="flex items-stretch">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fa-solid"
+          data-icon="book-bookmark"
+          class="input-icon mr-2 w-6 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M0 96C0 43 43 0 96 0h96V190.7c0 13.4 15.5 20.9 26 12.5L272 160l54 43.2c10.5 8.4 26 .9 26-12.5V0h32 32c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32v64c17.7 0 32 14.3 32 32s-14.3 32-32 32H384 96c-53 0-96-43-96-96V96zM64 416c0 17.7 14.3 32 32 32H352V384H96c-17.7 0-32 14.3-32 32z"
+          ></path>
+        </svg>
+        <div
+          class="form-floating relative flex-grow"
+          data-mdb-toggle-button="false"
+        >
+          <textarea
+            type="text"
+            class="form-control m-0 block w-full resize-none overflow-y-hidden rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            id="evaluation"
+            name="evaluation"
+            placeholder="學生學習成效評估方式"
+            autoHeight="true"
+          >
+{{ form.Evaluation }}</textarea
+          >
+          <label for="evaluation" class="text-gray-700">學生學習成效評估方式</label>
+        </div>
+      </div>
+    </section>
+    <section class="mt-3 flex justify-center">
+      <button
+        type="submit"
+        class="flex items-stretch rounded bg-blue-600 px-6 pt-2.5 pb-2 text-sm font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="paper-plane"
+          class="mr-2 w-3 self-center"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"
+          />
+        </svg>
+        {{ method }}
+      </button>
+    </section>
+  </form>
+</div>
+{% endblock %} {% block other_js %}
+<script>
+  let field = document.querySelectorAll("[autoHeight]");
+  field.forEach((element) => {
+    let base = 2 + element.value.split("\n").length * 1.25;
+    element.style.height = "calc(" + base + "rem + 2px)";
+    if (element.offsetHeight < element.scrollHeight) {
+      element.style.height = element.scrollHeight + 'px';
+    }
+    element.oninput = () => {
+      let base = 2 + element.value.split("\n").length * 1.25;
+      element.style.height = "calc(" + base + "rem + 2px)";
+      if (element.offsetHeight < element.scrollHeight) {
+        element.style.height = element.scrollHeight + 'px';
+      }
+    };
+  });
+</script>
+{% endblock %}
