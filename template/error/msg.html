@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+{% for message in messages %}
+{% if message.Level == 'error' %}
+<div class="bg-red-300 rounded-lg py-5 my-auto px-6 mb-4 text-base" role="alert">
+  <h4 class="text-2xl font-medium leading-tight mb-2">{{ message.Msg }}</h4>
+  <p class="mb-4">
+    {{ message.Detail }}
+  </p>
+</div>
+{% elif message.Level == 'warn' %}
+<div class="bg-yellow-300 rounded-lg py-5 my-auto px-6 mb-4 text-base" role="alert">
+  <h4 class="text-2xl font-medium leading-tight mb-2">{{ message.Msg }}</h4>
+  <p class="mb-4">
+    {{ message.Detail }}
+  </p>
+</div>
+{% endif %} {% endfor %}
+{% endblock %}

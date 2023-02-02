@@ -32,29 +32,29 @@
 <div class="accordion shadow-lg">
   {% for course in courses %}
   <div class="accordion-item border border-gray-200 bg-white">
-    <h2 class="accordion-header mb-0" id="headingCourse{{ course.ClassID }}">
+    <h2 class="accordion-header mb-0" id="headingCourse{{ course.ID }}">
       <button
         class="accordion-button collapsed relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-gray-800 transition focus:outline-none"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseCourse{{ course.ClassID }}"
+        data-bs-target="#collapseCourse{{ course.ID }}"
         aria-expanded="false"
-        aria-controls="collapseCourse{{ course.ClassID }}"
+        aria-controls="collapseCourse{{ course.ID }}"
       >
-        {{ course.Date }}-{{ course.ClassName }}
+        {{ course.DateCH }}-{{ course.Name }}
       </button>
     </h2>
     <div
-      id="collapseCourse{{ course.ClassID }}"
+      id="collapseCourse{{ course.ID }}"
       class="accordion-collapse collapse"
-      aria-labelledby="headingCourse{{ course.ClassID }}"
+      aria-labelledby="headingCourse{{ course.ID }}"
     >
       <div
         class="accordion-body grid grid-cols-1 gap-4 p-4 px-5 py-4 lg:grid-cols-4"
       >
         <a
           class="mx-auto flex items-stretch"
-          href="/class/{{ course.ClassID }}/design"
+          href="/class/{{ course.ID }}/design"
           rel="noreferrer noopener"
         >
           <svg
@@ -76,7 +76,7 @@
         </a>
         <a
           class="mx-auto flex items-stretch"
-          href="/class/{{ course.ClassID }}/preparation"
+          href="/class/{{ course.ID }}/preparation"
           rel="noreferrer noopener"
         >
           <svg
@@ -98,7 +98,7 @@
         </a>
         <a
           class="mx-auto flex items-stretch"
-          href="/class/{{ course.ClassID }}/briefing"
+          href="/class/{{ course.ID }}/briefing"
           rel="noreferrer noopener"
         >
           <svg
@@ -120,7 +120,7 @@
         </a>
         <a
           class="mx-auto flex items-stretch"
-          href="/class/{{ course.ClassID }}/observation/list"
+          href="/class/{{ course.ID }}/observation/list"
           rel="noreferrer noopener"
         >
           <svg
@@ -156,14 +156,14 @@
               d="M144 160c-44.2 0-80-35.8-80-80S99.8 0 144 0s80 35.8 80 80s-35.8 80-80 80zm368 0c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM416 224c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"
             ></path>
           </svg>
-          <p class="flex-grow self-center">參加人數： {{ course.Attend }}人</p>
+          <p class="flex-grow self-center">參加/預約人數：{{ course.AttendCount }}/{{ course.SubCount }} 人</p>
         </div>
         <a
           href="#"
           class="mx-auto flex items-stretch"
           data-bs-toggle="modal"
-          data-bs-target="#class{{ course.ClassID }}-QRCode-Modal"
-          aria-controls="class{{ course.ClassID }}-QRCode-Modal"
+          data-bs-target="#class{{ course.ID }}-QRCode-Modal"
+          aria-controls="class{{ course.ID }}-QRCode-Modal"
         >
           <svg
             aria-hidden="true"
@@ -207,7 +207,7 @@
         </a>
         <a
           class="mx-auto flex items-stretch"
-          href="/class/{{ course.ClassID }}"
+          href="/class/{{ course.ID }}"
           rel="noreferrer noopener"
         >
           <svg
@@ -235,9 +235,9 @@
 {% for course in courses %}
 <div
   class="modal fade fixed top-0 left-0 hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-  id="class{{ course.ClassID }}-QRCode-Modal"
+  id="class{{ course.ID }}-QRCode-Modal"
   tabindex="-1"
-  aria-labelledby="class{{ course.ClassID }}-QRCode-Modal"
+  aria-labelledby="class{{ course.ID }}-QRCode-Modal"
   aria-hidden="true"
   role="dialog"
 >
@@ -261,7 +261,7 @@
         ></button>
       </div>
       <div
-        id="class{{ course.ClassID }}-QRCode"
+        id="class{{ course.ID }}-QRCode"
         class="modal-body relative p-4"
       ></div>
     </div>
@@ -281,12 +281,12 @@
   function createQRCode() {
     let key = [
     // {% for course in courses %}
-      "class{{ course.ClassID }}-QRCode",
+      "class{{ course.ID }}-QRCode",
     // {% endfor %}
     ];
     let value = [
     // {% for course in courses %}
-      "{{baseURL}}/class/{{course.ClassID}}/attend/{{course.Passwd}}",
+      "{{baseURL}}/class/{{course.ID}}/participation?passwd={{course.AttendPassword}}",
     // {% endfor %}
     ];
     for (let i = 0; i < key.length; i++) {
@@ -301,11 +301,11 @@
 <script>
   let search = document.getElementById("search");
   search.onchange = function () {
-    let courses = document.getElementsByClassName("accordion-item");
+    let courses = document.getElemen("accordion-item");
     for (let i = 0; i < courses.length; i++) {
       let course = courses[i];
       let courseName =
-        course.getElementsByClassName("accordion-header")[0].innerText;
+        course.getElemen("accordion-header")[0].innerText;
       if (courseName.includes(search.value)) {
         course.style.display = "block";
       } else {

@@ -32,22 +32,22 @@
 <div class="accordion shadow-lg">
   {% for course in courses %}
   <div class="accordion-item border border-gray-200 bg-white">
-    <h2 class="accordion-header mb-0" id="headingCourse{{ course.ClassID }}">
+    <h2 class="accordion-header mb-0" id="headingCourse{{ course.ID }}">
       <button
         class="accordion-button collapsed relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-gray-800 transition focus:outline-none"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseCourse{{ course.ClassID }}"
+        data-bs-target="#collapseCourse{{ course.ID }}"
         aria-expanded="false"
-        aria-controls="collapseCourse{{ course.ClassID }}"
+        aria-controls="collapseCourse{{ course.ID }}"
       >
-        {{ course.Date}}-{{ course.Teacher }}老師-{{ course.ClassName }}
+        {{ course.DateCH }}-{{ course.User.Name }}老師-{{ course.Name }}
       </button>
     </h2>
     <div
-      id="collapseCourse{{ course.ClassID }}"
+      id="collapseCourse{{ course.ID }}"
       class="accordion-collapse collapse"
-      aria-labelledby="headingCourse{{ course.ClassID }}"
+      aria-labelledby="headingCourse{{ course.ID }}"
     >
       <div
         class="accordion-body grid grid-cols-1 gap-4 p-4 px-5 py-4 lg:grid-cols-4"
@@ -111,7 +111,11 @@
           </svg>
           <p class="flex-grow self-center">新增至 google 行事曆</p>
         </a>
-        <div class="mx-auto flex items-stretch">
+        <a 
+          class="mx-auto flex items-stretch"
+          href="/class/{{course.ID}}/reservation"
+          rel="noreferrer noopener"
+        >
           <svg
             aria-hidden="true"
             focusable="false"
@@ -128,7 +132,7 @@
             ></path>
           </svg>
           <p class="flex-grow self-center">預約</p>
-        </div>
+        </a>
       </div>
     </div>
   </div>
